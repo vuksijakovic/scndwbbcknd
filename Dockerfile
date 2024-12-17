@@ -18,7 +18,7 @@ RUN chown -R www-data:www-data /var/www/html \
 
 # Aktivacija mod_rewrite i Apache konfiguracije
 RUN a2enmod rewrite 
-RUN ./run.sh  # Aktivacija mod_rewrite i Apache konfiguracije
+RUN service apache2 restart
 
 COPY apache.conf /etc/apache2/sites-available/000-default.conf
 
