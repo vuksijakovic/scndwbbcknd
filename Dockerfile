@@ -17,8 +17,9 @@ RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html
 
 # Aktivacija mod_rewrite i Apache konfiguracije
-RUN a2enmod rewrite \
-    && service apache2 restart
+RUN a2enmod rewrite 
+RUN ./run.sh  # Aktivacija mod_rewrite i Apache konfiguracije
+
 COPY apache.conf /etc/apache2/sites-available/000-default.conf
 
 # Eksport porta 80
