@@ -1,9 +1,10 @@
 <?php
-// Allow CORS
+
+header("Access-Control-Allow-Origin: https://scandiweb-build.onrender.com"); // Replace with your frontend URL
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
+
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    header("Access-Control-Allow-Origin: https://scandiweb-build.onrender.com");
-    header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
-    header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
     http_response_code(200);
     exit();
 }
