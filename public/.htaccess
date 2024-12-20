@@ -6,9 +6,10 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php [L]
 
 <IfModule mod_headers.c>
-    Header set Access-Control-Allow-Origin "vuksijakovic"
+    Header set Access-Control-Allow-Origin "*"
     Header set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
     Header set Access-Control-Allow-Headers "Content-Type, Authorization"
+    Header set Content-Type "application/json"
 </IfModule>
 
 RewriteCond %{REQUEST_METHOD} OPTIONS
