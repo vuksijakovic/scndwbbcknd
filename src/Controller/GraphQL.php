@@ -403,7 +403,7 @@ class GraphQL {
 
             $rootValue = [];
             $result = GraphQLBase::executeQuery($schema, $query, $rootValue, null, $variableValues);
-            $output = "vuk";
+            $output = $result->toArray();
         } catch (Throwable $e) {
             $output = [
                 'error' => [
