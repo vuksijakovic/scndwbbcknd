@@ -1,21 +1,15 @@
-# Omogućavanje mod_rewrite
 RewriteEngine On
 
-# Proverava da li traženi fajl ne postoji
 RewriteCond %{REQUEST_FILENAME} !-f
-# Proverava da li traženi direktorijum ne postoji
 RewriteCond %{REQUEST_FILENAME} !-d
 
-# Preusmeravanje svih zahteva na index.php
 RewriteRule ^(.*)$ index.php [L]
 
-# Omogućavanje CORS za sve zahteve
 <IfModule mod_headers.c>
-    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Origin "vuksijakovic"
     Header set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
     Header set Access-Control-Allow-Headers "Content-Type, Authorization"
 </IfModule>
 
-# Rešavanje problema sa CORS preflight OPTIONS zahtevima
 RewriteCond %{REQUEST_METHOD} OPTIONS
 RewriteRule ^(.*)$ $1 [R=200,L]
