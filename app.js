@@ -15,19 +15,15 @@ phpServer.stdout.on("data", (data) => {
     console.log(`PHP server: ${data}`);
 });
 
-phpServer.stderr.on("data", (data) => {
-    console.error(`PHP server greška: ${data}`);
-});
+
 
 phpServer.on("close", (code) => {
     console.log(`PHP server se zatvorio sa kodom: ${code}`);
 });
 
-// Kreiranje proxy servera
 const proxy = httpProxy.createProxyServer();
 
 http.createServer((req, res) => {
-    // Dodaj CORS zaglavlja
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
     res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
@@ -40,7 +36,6 @@ http.createServer((req, res) => {
 
     // Prosledi zahtev PHP serveru
     proxy.web(req, res, { target: `http://localhost:${phpServerPort}` }, (error) => {
-        console.error("Proxy greška:", error);
         res.writeHead(500, { "Content-Type": "text/plain" });
         res.end("Greška u povezivanju sa PHP serverom.");
     });
