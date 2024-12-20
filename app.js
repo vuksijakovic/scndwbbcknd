@@ -4,7 +4,7 @@ const httpProxy = require("http-proxy");
 const path = require("path");
 
 // Putanja do Dockerfile
-const dockerFilePath = path.resolve(__dirname, "Dockerfile");
+const dockerFilePath = "Dockerfile";
 const phpServerPort = 8000; // Port za PHP server
 const nodeServerPort = 3000; // Port za Node.js proxy server
 const dockerContainerName = "php-server-container"; // Naziv Docker kontejnera
